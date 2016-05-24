@@ -1,8 +1,8 @@
 var router = require('express').Router();
 
 var HttpError = require('../../utils/HttpError');
-var User = require('./user.model');
-var Story = require('../stories/story.model');
+var User = require('../../api/users/user.model');
+var Story = require('../../api/stories/story.model');
 
 router.post('/', function(req, res, next) {
   User.findOne({
@@ -17,3 +17,5 @@ router.post('/', function(req, res, next) {
     }
   }).catch(next)
 })
+
+module.exports = router;
