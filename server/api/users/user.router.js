@@ -25,8 +25,10 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+  console.log("im at the route");
   User.create(req.body)
   .then(function (user) {
+    req.session.userId = user.id;
     res.status(201).json(user);
   })
   .catch(next);

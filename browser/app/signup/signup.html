@@ -1,15 +1,15 @@
 <div class="signin-container">
   <div class="buffer local">
-    <form>
+    <form name='signupForm' ng-submit='submitSignup(user, "/api/users/")'>
       <div class="form-group">
         <label>email</label>
-        <input type="text" class="form-control" required />
+        <input name='email' type="text" class="form-control" ng-model='user.email' required />
       </div>
       <div class="form-group">
         <label>password</label>
-        <input type="password" class="form-control" required />
+        <input name='password' type="password" class="form-control" ng-model='user.password' required />
       </div>
-      <button type="submit" class="btn btn-block btn-primary">signup</button>
+      <button type="submit" class="btn btn-block btn-primary" ng-click>signup</button>
     </form>
   </div>
   <div class="or buffer">
@@ -21,3 +21,4 @@
     <p><oauth-button provider-name="GitHub"></oauth-button></p>
   </div>
 </div>
+ 
