@@ -9,7 +9,7 @@ app.controller('StoryDetailCtrl', function ($scope, story, users, AuthFactory) {
 
   $scope.currentUser = AuthFactory.currentUser;
 
-  console.log($scope.currentUser)
+  // console.log($scope.currentUser)
   $scope.isAuthor = ($scope.currentUser.id === story.author_id);
 
   
