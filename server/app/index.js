@@ -2,6 +2,23 @@
 
 var app = require('express')();
 var path = require('path');
+var session = require('express-session');
+
+app.use(session({
+  // this mandatory configuration ensures that session IDs are not predictable
+  secret: 'tongiscool' // or whatever you like
+}));
+
+app.use('/api', function (req, res, next) {
+  if (!req.session.counter) req.session.counter = 0;
+  console.log('counter', ++req.session.counter);
+  next();
+});
+
+app.use(function (req, res, next) {
+  console.log('session', req.session);
+  next();
+});
 
 app.use(require('./logging.middleware'));
 
