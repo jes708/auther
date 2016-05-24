@@ -14,6 +14,9 @@ app.use(session({
 //   console.log('counter', ++req.session.counter);
 //   next();
 // });
+app.get('/session', function(req, res){
+	res.send(req.session)
+})
 
 app.use(function (req, res, next) {
   console.log('session', req.session);
@@ -29,6 +32,15 @@ app.use(require('./statics.middleware'));
 app.use('/api', require('../api/api.router'));
 
 app.use('/login', require('./login/login.session'));
+
+app.post('/logout', function(req,res){
+
+	req.session.destroy();
+	res.sendStatus(201);
+});
+
+
+
 
 var validFrontendRoutes = ['/', '/stories', '/users', '/stories/:id', '/users/:id', '/signup', '/login'];
 var indexPath = path.join(__dirname, '..', '..', 'public', 'index.html');
