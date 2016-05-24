@@ -33,6 +33,10 @@ app.use('/api', require('../api/api.router'));
 
 app.use('/login', require('./login/login.session'));
 
+app.get('/auth/me', function(req, res) {
+  res.send(req.session.user);
+})
+
 app.post('/logout', function(req,res){
 
 	req.session.destroy();

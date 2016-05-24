@@ -10,8 +10,9 @@ router.post('/', function(req, res, next) {
   })
   .then(function(user) {
     if (user) {
+      req.session.user = user;
       req.session.userId = user.id;
-      res.sendStatus(200)
+      res.status(200).send(user);
     } else {
       res.sendStatus(401);
     }
