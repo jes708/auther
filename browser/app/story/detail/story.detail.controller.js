@@ -7,14 +7,15 @@ app.controller('StoryDetailCtrl', function ($scope, story, users, AuthFactory) {
     $scope.story.save();
   }, true);
 
+  // AuthFactory.getCurrentUser()
+  // .then(function(user) {
+  //   $scope.currentUser = user;
+  // })
+
   $scope.currentUser = AuthFactory.currentUser;
-
-  // console.log($scope.currentUser)
-  $scope.isAuthor = ($scope.currentUser.id === story.author_id);
-
   
   $scope.cl = function(va) {
-    console.log(va)
+    console.log($scope.currentUser)
   }
 
 });

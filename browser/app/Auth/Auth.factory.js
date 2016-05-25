@@ -7,6 +7,14 @@ app.factory('AuthFactory', function($http, $log, $state){
   })
   .catch($log.error);
 
+  AuthFactory.getCurrentUser = function() {
+    return $http.get('/auth/me')
+    .then(function(res) {
+      return res.data;
+    })
+    .catch($log.error);
+  }
+  
 	AuthFactory.submitUser = function(user, path){
     $http.post(path, user)
 		.then(function(user){
